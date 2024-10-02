@@ -16,10 +16,10 @@ async function main() {
   const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
   // Call the method (replace with your method name)
-  const price = await contract.setIssuer("0xcF574BB88199B94351CA5D26Fa1Ea206A7BACeE4");
+  const setAutomationForwarder = await contract.setAutomationForwarder("0x26fCfc3581C519b4E840d7d2820Bac7572fcb2dC");
 
   // Print the result to the console
-  console.log("The price is:", price.toString());
+  console.log("The setAutomationForwarder is:", setAutomationForwarder.toString());
 }
 
 main()

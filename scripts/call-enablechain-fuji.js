@@ -2,7 +2,7 @@ const { ethers } = require("hardhat");
 
 async function main() {
   // Replace with your contract's deployed address
-  const contractAddress = "0x24Faf922144d3B34f89B6812A3FD1a46F734D8d5";
+  const contractAddress = "0x33ffd32a1506f791f5b71A1E22294590Bd4D3bA0";
 
   // Get the contract ABI (from the artifacts)
   const contractABI = require("../artifacts/contracts/RealEstateToken.sol/RealEstateToken.json").abi;
@@ -14,12 +14,15 @@ async function main() {
 
   // Connect to the contract using the address, ABI, and signer
   const contract = new ethers.Contract(contractAddress, contractABI, signer);
+  const chainSelector = BigInt(14767482510784806043);
+  const xNftAddress = "0x33ffd32a1506f791f5b71A1E22294590Bd4D3bA0";
+  const ccipExtraArgs = "0x97a657c90000000000000000000000000000000000000000000000000000000000030d40";
 
   // Call the method (replace with your method name)
-  const price = await contract.setIssuer("0xcF574BB88199B94351CA5D26Fa1Ea206A7BACeE4");
+  const setAutomationForwarder = await contract.enableChain(chainSelector, xNftAddress, ccipExtraArgs);
 
   // Print the result to the console
-  console.log("The price is:", price.toString());
+  console.log("The setAutomationForwarder is:", setAutomationForwarder.toString());
 }
 
 main()
